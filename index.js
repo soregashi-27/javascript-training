@@ -105,3 +105,11 @@ let oneHundredOneArray = [
 oneHundredOneArray.shift();
 oneHundredOneArray.unshift(['Logan', 35]);
 console.log(oneHundredOneArray);
+
+let myList = [
+  ['cereal', 3],
+  ['milk', 2],
+  ['bananas', 3],
+  ['juice', 2],
+  ['eggs', 10],
+];
