@@ -471,10 +471,10 @@ const herDog = {
   name: 'Quincy',
   legs: 3,
   tails: 2,
-  friends: [],
+  friends: ['freeCodeCamp Campers'],
 };
 
-herDog.name = ['freeCodeCamp Campers'];
+herDog.name = 'Happpy Coding';
 
 //Accessing Object Properties with Dot Notation
 let testObj = {
@@ -484,8 +484,7 @@ let testObj = {
 };
 
 let hatValue = testObj.hat;
-let shirtValue = testOb.shirt;
-
+let shirtValue = testObj.shirt;
 const testObjSecond = {
   'an entree': 'hamburger',
   'my side': 'veggies',
@@ -495,7 +494,7 @@ const testObjSecond = {
 let entreeValue = testObjSecond['an entree'];
 let drinkValue = testObjSecond['the drink'];
 
-var testObj = {
+var testObjThird = {
   12: 'Namath',
   16: 'Montana',
   19: 'Unitas',
@@ -506,3 +505,461 @@ let player = testObj[playerNumber];
 
 //1:54:32~
 //https://www.youtube.com/watch?v=PkZNo7MFNFg
+
+function phoneticLookup(val) {
+  let result = '';
+
+  let lookUp = {
+    alpha: 'Adams',
+    bravo: 'Boston',
+    charlie: 'Chicago',
+    delta: 'Denver',
+    echo: 'Easy',
+    foxtrot: 'Frank',
+  };
+  // The same as meaning below
+  // switch (val) {
+  //   case 'alhpa':
+  //     result = 'Adams';
+  //     break;
+  //   case 'bravo':
+  //     result = 'Boston';
+  //     break;
+  //   case 'charlie':
+  //     result = 'Chicago';
+  //     break;
+  //   case 'dalta':
+  //     result = 'Denver';
+  //     break;
+  //   case 'echo':
+  //     result = 'Easy';
+  //     break;
+  //   case 'foxtrot':
+  //     result = 'Frank';
+  //}
+  result = lookUp[val];
+
+  return result;
+}
+console.log(phoneticLookup('charlie'));
+
+let myMusicList = [
+  {
+    artist: 'Billy Joel',
+    title: 'Piano Man',
+    releaseYear: 1973,
+    formats: ['CD', '8T', 'LP'],
+    gold: true,
+  },
+  {
+    artist: 'Beau Carnes',
+    title: 'Cereal Man',
+    releaseYear: 2003,
+    formats: ['Youtube Video'],
+  },
+];
+
+//Nested Objects
+let myStorage = {
+  car: {
+    inside: {
+      gloveBox: 'maps',
+      'passenger seat': 'crumbs',
+    },
+    outside: {
+      trunk: 'jack',
+    },
+  },
+};
+
+const gloveBoxContents = myStorage.car.inside['gloveBox'];
+console.log(gloveBoxContents);
+
+//Nested Arrays
+let myPlanets = [
+  {
+    type: 'flowers',
+    list: ['rose', 'tulip', 'denadelion'],
+  },
+  {
+    type: 'trees',
+    list: ['fir', 'pine', 'birch'],
+  },
+];
+
+let secondTreeTypeFlowers = myPlanets[0].list[1];
+let secondTreeTypeTrees = myPlanets[1].list[1];
+console.log(secondTreeTypeFlowers);
+console.log(secondTreeTypeTrees);
+
+let collection = {
+  2548: {
+    album: 'Slippery when Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let it Rock', 'You give Love a Bad Name'],
+  },
+  2468: {
+    album: '1999',
+    artlist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette'],
+  },
+  1245: {
+    artlist: 'Robert Palmer',
+    tracks: [],
+  },
+  5439: {
+    album: 'ABBA Gold',
+  },
+};
+
+let collectionCopy = JSON.parse(JSON.stringify(collection));
+
+function updateRecords(id, prop, value) {
+  if (value === '') {
+    delete collection[id][prop];
+  } else if (prop === 'tracks') {
+    collection[id][prop] = collection[id][prop] || [];
+    collection[id][prop].push(value);
+  } else {
+    collection[id][prop] = value;
+  }
+
+  return collection;
+}
+
+updateRecords(2468, 'tracks', 'test');
+console.log(updateRecords('5439', 'artist', 'ABBA'));
+
+let ourArraysixThityThree = [];
+
+for (var i = 0; i < 10; i += 2) {
+  ourArraysixThityThree.push(i);
+}
+
+console.log(ourArraysixThityThree);
+
+let ourArraysixThityNine = [];
+
+for (var i = 1; i < 10; i += 2) {
+  ourArraysixThityNine.push(i);
+}
+
+console.log(ourArraysixThityNine);
+
+let ourArr = [9, 10, 11, 12];
+let ourArrTotal = 0;
+
+for (var i = 0; i < ourArr.length; i++) {
+  ourArrTotal += ourArr[i];
+}
+
+console.log(ourArrTotal);
+
+function multiplyAll(arr) {
+  let product = 1;
+
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr[i].length; j++) {
+      product *= arr[[i][j]];
+    }
+  }
+
+  return product;
+}
+
+let product = multiplyAll([
+  [1, 2],
+  [3, 4],
+  [5, 6, 7],
+]);
+
+console.log(product);
+
+let myArray = [];
+let a = 10;
+
+do {
+  myArray.push(a);
+  a++;
+} while (a < 5);
+
+console.log(a, myArray);
+
+let contacts = [
+  {
+    firstName: 'Akira',
+    lastName: 'Latine',
+    number: '0543236543',
+    likes: ['Pizza', 'Coding', 'Brownie Points'],
+  },
+  {
+    firstName: 'Harry',
+    lastName: 'Potter',
+    number: '0093123453',
+    likes: ['Hogwarts', 'Magic', 'Hagrid'],
+  },
+  {
+    firstName: 'Sherlock',
+    lastName: 'Holmes',
+    number: '0645212345',
+    likes: ['Intriguing Cases', 'Violin'],
+  },
+  {
+    firstName: 'Kristian',
+    lastName: 'Vos',
+    number: '0543334352',
+    likes: ['JavaScript', 'games', 'Foxes'],
+  },
+  {
+    firstName: 'John',
+    lastName: 'Smith',
+    number: '0513532467',
+    likes: ['Pizza', 'Sushi', 'potatos'],
+  },
+  {
+    firstName: 'Phil',
+    lastName: 'Heath',
+    number: '0874563124',
+    likes: ['Protein', 'Olympia', 'Workout'],
+  },
+  {
+    firstName: 'Jonathan',
+    lastName: 'Jorster',
+    number: '0534753146',
+    likes: ['Erina', 'Hamon', 'Caesal'],
+  },
+  {
+    firstName: 'Akira',
+    lastName: 'Smith',
+    number: '0554326523',
+    likes: ['Japanese', 'French', 'English'],
+  },
+  {
+    firstName: 'tom',
+    lastName: 'Ford',
+    number: '0543236543',
+    likes: ['Apparel', 'SunGrass', 'Coffee'],
+  },
+  {
+    firstName: 'Lon',
+    lastName: 'Herman',
+    number: '0983235331',
+    likes: ['Apparel', 'NewYork', 'Los Angeles'],
+  },
+];
+
+function lookUpProfile(name, prop) {
+  for (var ii = 0; ii < contacts.length; ii++) {
+    if (contacts[ii].firstName === name) {
+      return contacts[ii][prop] || 'No such property';
+    }
+  }
+  return 'No such contact';
+}
+
+let data = lookUpProfile('Harry', 'lastName');
+console.log(data);
+
+let ramdomNumberBetween0and19 = Math.floor(Math.random() * 20);
+
+function randomWholeNum() {
+  return Math.floor(Math.random() * 10);
+}
+console.log(randomWholeNum());
+
+function ourRandomRange(ourMin, ourMax) {
+  return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+
+ourRandomRange(1, 9);
+
+function randomRange(myMin, myMax) {
+  return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
+}
+
+var myRandom = randomRange(5, 15);
+console.log(myRandom);
+
+function convertToInteger(str) {
+  return parseInt(str, 2);
+}
+
+convertToInteger('10011');
+//no console
+
+function checkSign(num) {
+  return num > 0 ? 'positive' : num < 0 ? 'negative' : 'zero';
+}
+console.log(checkSign(0));
+
+let mycatName = 'quincy';
+let quote;
+
+myCatName = 'Beau';
+
+function catTalk() {
+  'use strict';
+
+  myCatName = 'Oliver';
+  quote = myCatName + 'says Meow!';
+}
+console.log(catTalk);
+
+function checkScope() {
+  'use strict';
+  var iii = 'function scope';
+  if (true) {
+    iii = 'block scope';
+    console.log('Block scopre iii is:', iii);
+  }
+  console.log('Function scope iii is:', iii);
+  return iii;
+}
+
+console.log(checkScope());
+
+function checkScopeSecond() {
+  'use strict';
+  let iiii = 'function scope';
+  if (true) {
+    let iiii = 'block scope';
+    console.log('Block scope iiii is:', iiii);
+  }
+  console.log('Function scope iiii is', iiii);
+  return iiii;
+}
+console.log(checkScopeSecond());
+
+function printManyTimes(str) {
+  'use strict';
+
+  const SENTENCE = str + 'is cool!!';
+
+  for (let iiiii = 0; i < str.length; iiiii += 2) {
+    console.log(SENTENCE);
+  }
+}
+// printManyTimes('FreeCodeCamp');
+//Unlimit logs
+
+const s = [5, 7, 2];
+
+function editInPlace() {
+  'use strict';
+
+  s[0] = 2;
+  s[1] = 5;
+  s[2] = 7;
+}
+editInPlace();
+console.log(s);
+
+function freezeObj() {
+  'use strict';
+  const MATH_CONSTANTS = {
+    PI: 3.14,
+  };
+
+  try {
+    MATH_CONSTANTS.PI = 99;
+  } catch (ex) {
+    console.log(ex);
+  }
+  return MATH_CONSTANTS.PI;
+}
+
+const PI = freezeObj();
+console.log(PI);
+
+//Use arrow functions to write concise anonymouse functions
+let magic = function () {
+  new Date();
+};
+
+let magicArrow = () => new Date();
+
+const myConcat = (arr1, arr2) => arr1.concat(arr2);
+console.log(myConcat([1, 2], [3, 4, 5]));
+
+const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+
+const squareList = (arr) => {
+  const squaredIntegers = arr
+    .filter((num) => Number.isInteger(num) && num > 0)
+    .map((x) => x * x);
+  return squaredIntegers;
+};
+
+const squaredIntegers = squareList(realNumberArray);
+console.log(squaredIntegers);
+
+const increment = (function () {
+  return function increment(number, value = 1) {
+    return number + value;
+  };
+})();
+//↑() What do you mean?
+console.log(increment(5, 2));
+console.log(increment(5));
+
+const sum905 = (function () {
+  return function sum(x, y, z) {
+    const arges = [x, y, z];
+    return arges.reduce((a, b) => a + b, 0);
+  };
+})();
+console.log(sum905(1, 2, 3));
+
+const sum913 = (function () {
+  return function sum(...args) {
+    return args.reduce((a, b) => a + b, 0);
+  };
+})();
+console.log(sum913(1, 2, 3, 4));
+
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+(function () {
+  // arr2 = arr1;
+  arr2 = [...arr1];
+  arr1[0] = 'potato';
+})();
+console.log(arr2);
+
+let voxel = { x: 3.6, y: 7.4, z: 6.54 };
+
+let x = voxel.x;
+let y = voxel.y;
+let z = voxel.z;
+
+// const { x: a, y: b, z: c } = voxel;
+
+const AVG_TEMPERATURES = {
+  today: 77.5,
+  tomorrow: 79,
+};
+
+function getTempOfTmrw(avgTemperatures) {
+  'use strict';
+
+  const { tomorrow: tempOfTomorrow } = avgTemperatures;
+
+  return tempOfTomorrow;
+}
+console.log(getTempOfTmrw(AVG_TEMPERATURES));
+
+const LOCAL_FORECAST = {
+  today: { min: 72, max: 83 },
+  tomorrow: { min: 73.3, max: 84.6 },
+};
+
+function getMaxOfTmrw(forecast) {
+  'use strict';
+
+  const {
+    tomorrow: { max: maxOfTomorrow },
+  } = forecast;
+
+  return maxOfTomorrow;
+}
+console.log(getMaxOfTmrw(LOCAL_FORECAST));
