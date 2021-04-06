@@ -963,3 +963,132 @@ function getMaxOfTmrw(forecast) {
   return maxOfTomorrow;
 }
 console.log(getMaxOfTmrw(LOCAL_FORECAST));
+
+const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function removeFirstTwo(list) {
+  const [, , ...arr971] = list;
+  return arr971;
+}
+const arr971 = removeFirstTwo(source);
+console.log(arr971);
+console.log(source);
+
+const stats = {
+  max: 56.78,
+  satndard_devitation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85,
+};
+const half = (function () {
+  return function half({ max, min }) {
+    return (max + min) / 2.0;
+  };
+})();
+console.log(stats);
+console.log(half(stats));
+
+const person = {
+  name: 'Zodiac Hasbro',
+  age: 56,
+};
+
+const greeting = `Hi there! I'm ${person.name}! 
+I turned ${person.age} old today.`;
+
+console.log(greeting);
+
+const result = {
+  success: ['max-length', 'no-amd', 'prefer-arrow-functions'],
+  failure: ['no-var', 'var-on-top', 'linebreak'],
+  skipped: ['id-blacklist', 'no-dup-keys'],
+};
+
+function makeList(arr) {
+  const resultDisplayArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    resultDisplayArray.push(`<li class="text-warning">${arr[i]}</li>`);
+  }
+
+  return resultDisplayArray;
+}
+
+const resultDisplayArray = makeList(result.failure);
+
+console.log(resultDisplayArray);
+
+const createPerson = (name, age, gender) => {
+  return {
+    name: name,
+    age: age,
+    gender: gender,
+  };
+};
+console.log(createPerson('Zodiac', 56, 'male'));
+
+const bicycle = {
+  gear: 2,
+  setgear(newGear) {
+    'use strict';
+    this.gear = newGear;
+  },
+};
+
+bicycle.setgear(3);
+console.log(bicycle.gear);
+
+const spaceShuttle = function (targetPlanet) {
+  this.targetPlanet = targetPlanet;
+};
+
+let zeus = new spaceShuttle('Jupiter');
+
+console.log(zeus.targetPlanet);
+
+function makeClass() {
+  class vegetable {
+    constructor(name) {
+      this.name = name;
+    }
+  }
+  return vegetable;
+}
+const vegetable = makeClass();
+const carrot = new vegetable('carrot');
+// console.log(carrot.name);
+
+//Understanding useing "this"
+class book {
+  constructor(author) {
+    this._author = author;
+  }
+
+  getWriter() {
+    return this._author;
+  }
+
+  setWriter(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+
+function makeClass() {
+  class Thermostat {
+    constructor(temp) {
+      this._temp = (5 / 9) * (temp - 32);
+    }
+    get temperature() {
+      return this._temp;
+    }
+  }
+  return Thermostat;
+}
+
+const Thermostat = makeClass();
+const thermos = new Thermostat(76);
+let temp = thermos.temperature;
+thermos.temperature = 26;
+temp = thermos.temperature;
+
+console.log(temp);
