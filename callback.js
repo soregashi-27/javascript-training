@@ -79,4 +79,55 @@ wait(0).then((num) => {
 });
 
 //2を返すタイミングでエラーとする
-//6:15~スタート
+//エラーを出さないために、.catchメソッドを使う
+
+function wait(num84) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(num84);
+      if (num84 === 2) {
+        reject(num84);
+      } else {
+        resolve(num84);
+      }
+    }, 100);
+  });
+}
+wait(0)
+  .then((num84) => {
+    num84++;
+    wait(num84);
+    return wait(num84);
+  })
+  .then((num84) => {
+    num84++;
+    wait(num84);
+    return wait(num84);
+  })
+  .catch((num84) => {
+    num84++;
+    consoile.error(num84, 'error');
+  });
+
+//並列処理
+function wait(num114) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(num114);
+      if (num114 === 3) {
+        reject(num114);
+      } else {
+        resolve(num114);
+      }
+    }, 100);
+  });
+}
+
+Promise.all([wait(1000), wait(1500), wait(3000)]).then((num114) => {
+  console.log(num114);
+});
+
+//処理が終わったら、その次に処理が起こる（同時ではない）
+Promise.race([wait(1000), wait(1500), wait(3000)]).then((num114) => {
+  console.log(num114 + 1005);
+});
