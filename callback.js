@@ -1,3 +1,5 @@
+//Google Chrome consoleでlogを確認したほうが処理の理解がしやすい
+
 // callback, promise, await-sync
 //非同期処理のプログラミングは強力な処理に変わる
 
@@ -130,4 +132,123 @@ Promise.all([wait(1000), wait(1500), wait(3000)]).then((num114) => {
 //処理が終わったら、その次に処理が起こる（同時ではない）
 Promise.race([wait(1000), wait(1500), wait(3000)]).then((num114) => {
   console.log(num114 + 1005);
+});
+
+//awaitとasync
+async function sample() {
+  const num = await asyncFn();
+  num++;
+  return num;
+}
+
+asyncFn(0).then((num) => {
+  num++;
+  return num;
+});
+
+//awaitをfunction内で使った場合、functionの先頭にはasyncをつける
+//await 非同期処理
+async function sample() {
+  const num = await asyncFn();
+  num++;
+  return num;
+}
+
+asyncFn(0).then((num) => {
+  num++;
+  return num;
+});
+
+//ロジックの例
+function wait(num) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      console.log(num);
+      if (num === 2) {
+        reject(num);
+      } else {
+        resolve(num);
+      }
+    }, 100);
+  });
+}
+
+// Promiseで使うthenと同じ機能がある
+// function init() {
+//     await wait(0);
+// }
+
+//違う例, numをincreament
+// increament: 段階的に増えていくイメージに近い
+async function init() {
+  let num = await wait(0);
+  num++;
+  num = await wait(num);
+  num++;
+  num = await wait(num);
+  num++;
+  num = await wait(num);
+  num++;
+
+  return num;
+}
+init();
+//2が呼ばれる段階でrejectが呼ばれる 163stepsを参照
+
+//try, catchでエラーを受ける
+async function init() {
+  let num = 0;
+  try {
+    num = await wait(num);
+    num++;
+    num = await wait(num);
+    num++;
+    num = await wait(num);
+    num++;
+  } catch (error) {
+    throw new Error('Error is occured', error);
+  }
+
+  return num;
+}
+init();
+// console.log(init());
+
+//promiseで値を自分で指定してもOK
+async function init() {
+  let num = 0;
+  try {
+    num = await wait(num);
+    num++;
+    num = await wait(num);
+    num++;
+    num = await wait(num);
+    num++;
+  } catch (error) {
+    throw new Error('Error is occured', error);
+  }
+
+  return new Promise(() => {
+    console.log('Define Promise');
+  });
+}
+init();
+// console.log(init());
+
+async function init() {
+  let num = 0;
+  try {
+    num = await wait(num);
+    num++;
+    num = await wait(num);
+    num++;
+    // num = await num;
+    // num++;
+  } catch (error) {
+    throw new Error('Error is occured', error);
+  }
+  return num;
+}
+init().then((num) => {
+  console.log(num, 'End');
 });
